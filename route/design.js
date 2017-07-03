@@ -9,17 +9,17 @@ var sendHtml = function(path, response) {
     })
 }
 
-var index = {
-    path: '/',
+var design = {
+    path: '/design',
     method: 'get',
     func: function(request, response) {
-        var path = 'main_index.html'
+        var path = 'design_index.html'
         sendHtml(path, response)
     }
 }
 
 var routes = [
-    index
+    design
 ]
 
 module.exports.routes = routes
