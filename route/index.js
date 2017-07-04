@@ -18,8 +18,18 @@ var index = {
     }
 }
 
+var design = {
+    path: '/design',
+    method: 'get',
+    func: function(request, response) {
+        var path = 'design_inline.html'
+        sendHtml(path, response)
+    }
+}
+
 var routes = [
-    index
+    index,
+    design
 ]
 
 module.exports.routes = routes
