@@ -18,15 +18,16 @@ var ajax = function(method, path, data, reseponseCallback) {
     r.send(data)
 }
 
-var showDesignIndex = function(data) {
-    var body = e('body')
-    body.innerHTML = data
+var insertDesign = function(data) {
+    var main = e('.main')
+    main.innerHTML = data
 }
 
 var bindDesignBtn = function() {
     var btn = e('.design')
     btn.addEventListener('click', function() {
-        location.pathname = "/design"
+        ajax('get', '/design', '', insertDesign)
+        // location.pathname = "/design"
     })
 }
 
