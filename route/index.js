@@ -22,7 +22,7 @@ var design = {
     path: '/design',
     method: 'get',
     func: function(request, response) {
-        var path = 'design_inline.html'
+        var path = 'design.html'
         sendHtml(path, response)
     }
 }

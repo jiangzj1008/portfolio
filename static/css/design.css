@@ -1,0 +1,13 @@
+/*设计部分样式*/
+.container.design_part {
+    background: none;
+}
+
+.design_wrap {
+
+}
+.design_aside {
+    width: 200px;
+    height: 100%;
+    background: blue;
+}

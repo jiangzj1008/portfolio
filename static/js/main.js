@@ -18,17 +18,19 @@ var ajax = function(method, path, data, reseponseCallback) {
     r.send(data)
 }
 
-var insertDesign = function(data) {
-    var main = e('.main')
-    main.innerHTML = data
+var bindMainBtn = function() {
+    var btn = e('.title')
+    btn.addEventListener('click', function() {
+        location.pathname = "/"
+    })
 }
 
 var bindDesignBtn = function() {
     var btn = e('.design')
-    btn.addEventListener('click', function() {
-        ajax('get', '/design', '', insertDesign)
-        // location.pathname = "/design"
+    btn.addEventListener('click', function(){
+        location.pathname = "/design"
     })
 }
 
+bindMainBtn()
 bindDesignBtn()
