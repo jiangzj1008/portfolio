@@ -13,7 +13,8 @@ const registerRoutes = function(app, routes) {
 }
 
 const routeFiles = [
-    './route/index'
+    './route/index',
+    './route/comment'
 ]
 
 var registerAll = function(routeFiles) {
