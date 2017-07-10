@@ -21,7 +21,7 @@ var index = {
 var design = {
     path: '/design',
     method: 'get',
-    func: function(request,co response) {
+    func: function(request, response) {
         var path = 'design.html'
         sendHtml(path, response)
     }
@@ -29,8 +29,7 @@ var design = {
 
 var routes = [
     index,
-    design,
-    comment
+    design
 ]
 
 module.exports.routes = routes

@@ -5,7 +5,13 @@ var all = {
     method: 'get',
     func: function(request, response) {
         var comments = comment.all()
-        var r = JSON.strigify(comments)
+        var r = JSON.stringify(comments)
         response.send(r)
     }
 }
+
+var routes = [
+    all
+]
+
+module.exports.routes = routes

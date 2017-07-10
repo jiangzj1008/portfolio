@@ -32,5 +32,16 @@ var bindDesignBtn = function() {
     })
 }
 
+var bindCommentBtn = function() {
+    var btn = e('.comment')
+    btn.addEventListener('click', function(){
+        ajax('get', '/api/comment/all', '', function(response) {
+            var data = JSON.parse(response)
+            console.log(data);
+        })
+    })
+}
+
 bindMainBtn()
 bindDesignBtn()
+bindCommentBtn()

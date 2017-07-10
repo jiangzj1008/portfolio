@@ -17,3 +17,9 @@ const loadData = function() {
 var b = {
     data: loadData()
 }
+
+b.all = function() {
+    return this.data
+}
+
+module.exports = b
