@@ -42,6 +42,25 @@ var bindCommentBtn = function() {
     })
 }
 
+// 留言板
+var templateComment = function(obj) {
+    var t = `
+        <div class="comment-item">
+            <img src="" alt="">
+            <div class="comment-detail">
+                <p class="comment-author">
+                    北顾
+                    <span class="comment-time">2017-07-11, 17:35</span>
+                </p>
+                <p class="comment-content">hello!</p>
+            </div>
+        </div>
+    `
+}
+var insertComment = function() {
+
+}
+
 bindMainBtn()
 bindDesignBtn()
 bindCommentBtn()
