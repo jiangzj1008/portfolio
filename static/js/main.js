@@ -40,6 +40,7 @@ var commentAdd = function() {
         data: data,
         contentType: 'application/json',
         callback: function(response) {
+            var data = JSON.parse(response)
             var t = templateComment(data)
             var wrap = e('.comment-wrap')
             wrap.innerHTML += t
@@ -67,7 +68,7 @@ var templateComment = function(obj) {
 }
 
 var insertComment = function(data) {
-    var html
+    var html = ''
     for (var i = 0; i < data.length; i++) {
         var d = data[i]
         var t = templateComment(d)
@@ -77,15 +78,9 @@ var insertComment = function(data) {
     wrap.innerHTML = html
 }
 
-var bindCommentAdd = function() {
-    bindEvent('.comment-submit', 'click', function() {
-        ajax('post', )
-    })
-}
-
 var bindCommentEvent = function() {
     bindEvent('.comment', 'click', commentAll)
-    bindEvent('.comment-submit', 'click', commentAdd)
+    bindEvent('.input-submit', 'click', commentAdd)
 }
 
 bindMainBtn()

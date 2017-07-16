@@ -7,8 +7,8 @@ var es = function(sels) {
 }
 
 var bindEvent = function(sel, evt, func) {
-    var s = e(sel)
-    s.addEventListener(evt, func)
+    var ele = e(sel)
+    ele.addEventListener(evt, func)
 }
 
 var ajax = function(request) {
