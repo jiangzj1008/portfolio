@@ -4,24 +4,26 @@ body {
     width: 100%;
     height: 100%;
 }
+body {
+    background: url('../images/storyFanHoGallery2.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+}
 .container {
     position: relative;
     width: 100%;
-    height: 100%;
     min-width: 1200px;
-    background: url('../images/storyFanHoGallery2.jpg') no-repeat center;
-    background-size: cover;
 }
 
 /*头部*/
 .head {
     z-index: 10;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
     height: 40px;
-    background: rgba(230, 229, 229, 0.5);
+    background: rgba(230, 229, 229, 1);
     border-bottom: 1px solid #dedede;
 }
 .wrap {
@@ -65,17 +67,22 @@ body {
 
 /*评论部分*/
 .comment-container {
-    position: absolute;
     width: 100%;
-    height: 100%;
+}
+.comment-form {
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+.comment-author {
+
 }
 .comment-wrap {
     width: 1200px;
-    padding: 20px;
     margin: auto;
-    margin-top: 100px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.9);
 }
 .comment-item {
     border-bottom: 1px solid #dedede;
+    margin: 20px;
 }

@@ -1,23 +1,3 @@
-var e = function(sel) {
-    return document.querySelector(sel)
-}
-
-var es = function(sels) {
-    return document.querySelectorAll(sels)
-}
-
-var ajax = function(method, path, data, reseponseCallback) {
-    var r = new XMLHttpRequest()
-    r.open(method, path, true)
-    r.setRequestHeader('Content-Type', 'application/json')
-    r.onreadystatechange = function() {
-        if (r.readyState === 4 && r.status === 200) {
-            reseponseCallback(r.response)
-        }
-    }
-    r.send(data)
-}
-
 var bindMainBtn = function() {
     var btn = e('.title')
     btn.addEventListener('click', function() {
@@ -32,15 +12,40 @@ var bindDesignBtn = function() {
     })
 }
 
-var bindCommentBtn = function() {
-    var btn = e('.comment')
-    btn.addEventListener('click', function(){
-        ajax('get', '/api/comment/all', '', function(response) {
+var commentAll = function() {
+    var request = {
+        method: 'get',
+        url: '/api/comment/all',
+        contentType: 'application/json',
+        callback: function(response) {
             var data = JSON.parse(response)
-            console.log(data);
+            console.log(data)
             insertComment(data)
-        })
-    })
+        }
+    }
+    ajax(request)
+}
+
+var commentAdd = function() {
+    var author = e('.comment-author').value
+    var content = e('.comment-content').value
+    var form = {
+        author: author,
+        content: content
+    }
+    var data = JSON.stringify(form)
+    var request = {
+        method: 'post',
+        url: '/api/comment/add',
+        data: data,
+        contentType: 'application/json',
+        callback: function(response) {
+            var t = templateComment(data)
+            var wrap = e('.comment-wrap')
+            wrap.innerHTML += t
+        }
+    }
+    ajax(request)
 }
 
 var templateComment = function(obj) {
@@ -60,6 +65,7 @@ var templateComment = function(obj) {
     `
     return t
 }
+
 var insertComment = function(data) {
     var html
     for (var i = 0; i < data.length; i++) {
@@ -71,6 +77,17 @@ var insertComment = function(data) {
     wrap.innerHTML = html
 }
 
+var bindCommentAdd = function() {
+    bindEvent('.comment-submit', 'click', function() {
+        ajax('post', )
+    })
+}
+
+var bindCommentEvent = function() {
+    bindEvent('.comment', 'click', commentAll)
+    bindEvent('.comment-submit', 'click', commentAdd)
+}
+
 bindMainBtn()
 bindDesignBtn()
-bindCommentBtn()
+bindCommentEvent()

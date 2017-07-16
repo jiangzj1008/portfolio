@@ -10,8 +10,21 @@ var all = {
     }
 }
 
+var add = {
+    path: '/api/comment/add',
+    method: 'post',
+    func: function(request, response) {
+        var form = request.body
+        console.log(request);
+        var c = comment.new(form)
+        var r = JSON.stringify(c)
+        response.send(r)
+    }
+}
+
 var routes = [
-    all
+    all,
+    add,
 ]
 
 module.exports.routes = routes
