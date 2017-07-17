@@ -1,17 +1,3 @@
-var bindMainBtn = function() {
-    var btn = e('.title')
-    btn.addEventListener('click', function() {
-        location.pathname = "/"
-    })
-}
-
-var bindDesignBtn = function() {
-    var btn = e('.design')
-    btn.addEventListener('click', function(){
-        location.pathname = "/design"
-    })
-}
-
 var commentAll = function() {
     var request = {
         method: 'get',
@@ -26,13 +12,19 @@ var commentAll = function() {
     ajax(request)
 }
 
-var commentAdd = function() {
-    var author = e('.input-author').value
-    var content = e('.input-content').value
-    var form = {
-        author: author,
-        content: content
+var commentVerify = function() {
+    var f = {}
+    var form = e('.comment-form')
+    var inputs = form.querySelectorAll('.comment-input')
+    for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i]
+        f[input.dataset.key] = input.value
     }
+    return f
+}
+
+var commentAdd = function() {
+    var form = commentVerify()
     var data = JSON.stringify(form)
     var request = {
         method: 'post',
@@ -83,6 +75,12 @@ var bindCommentEvent = function() {
     bindEvent('.input-submit', 'click', commentAdd)
 }
 
-bindMainBtn()
-bindDesignBtn()
+var bindMainEvent = function() {
+    bindEvent('.title', 'click', function() {
+        location.pathname = "/"
+    })
+}
+
+
+bindMainEvent()
 bindCommentEvent()
