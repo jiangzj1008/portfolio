@@ -27,8 +27,8 @@ var commentAll = function() {
 }
 
 var commentAdd = function() {
-    var author = e('.comment-author').value
-    var content = e('.comment-content').value
+    var author = e('.input-author').value
+    var content = e('.input-content').value
     var form = {
         author: author,
         content: content

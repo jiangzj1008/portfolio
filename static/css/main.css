@@ -66,30 +66,44 @@ body {
 
 /*评论部分*/
 .comment-container {
+    font-size: 18px;
     width: 100%;
+    padding-top: 60px;
+    padding-bottom: 20px;
 }
 .comment-form {
+    box-sizing: border-box;
     width: 1000px;
+    padding: 10px;
     margin: auto;
-    margin-top: 50px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
 }
-.comment-form input {
+.input-author,
+.input-content,
+.input-submit {
+    display: block;
     box-sizing: border-box;
     padding: 2px 4px;
-    border: 1px solid #dedede;
+    margin: 10px auto;
+    border: 1px solid #c7c7c7;
     border-radius: 5px;
     height: 30px;
     outline: none;
 }
 .input-author {
-    width: 100px;
+    width: 500px;
 }
 .input-content {
-    width: 400px;
+    width: 500px;
+    height: 150px;
+    resize: none;
 }
 .input-submit {
     color: #989898;
-    width: 70px;
+    width: 120px;
     background: #e6e5e5;
     cursor: pointer;
 }
@@ -99,10 +113,15 @@ body {
 .comment-wrap {
     width: 1000px;
     margin: auto;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #c7c7c7;
+    border-radius: 10px;
 }
 .comment-item {
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #828282;
     margin: 20px;
+}
+.comment-time {
+    font-size: 14px;
+    color: #505050;
 }
