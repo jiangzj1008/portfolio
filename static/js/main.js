@@ -1,12 +1,15 @@
 var commentAll = function() {
+    var ct = e('.comment-container')
+    ct.classList.add('show')
     var request = {
         method: 'get',
         url: '/api/comment/all',
         contentType: 'application/json',
         callback: function(response) {
             var data = JSON.parse(response)
-            console.log(data)
-            insertComment(data)
+            var wrap = e('.comment-wrap')
+            wrap.innerHTML = ''
+            commentInsert(data)
         }
     }
     ajax(request)
@@ -18,13 +21,23 @@ var commentVerify = function() {
     var inputs = form.querySelectorAll('.comment-input')
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i]
-        f[input.dataset.key] = input.value
+        var val = input.value.trim()
+        var key = input.dataset.key
+        if (val === '') {
+            alert('请填写姓名及留言，不要留空。')
+            return undefined
+        } else {
+            f[key] = val
+        }
     }
     return f
 }
 
 var commentAdd = function() {
     var form = commentVerify()
+    if (form === undefined) {
+        return
+    }
     var data = JSON.stringify(form)
     var request = {
         method: 'post',
@@ -33,15 +46,14 @@ var commentAdd = function() {
         contentType: 'application/json',
         callback: function(response) {
             var data = JSON.parse(response)
-            var t = templateComment(data)
-            var wrap = e('.comment-wrap')
-            wrap.innerHTML += t
+            var arr = [data]
+            commentInsert(arr)
         }
     }
     ajax(request)
 }
 
-var templateComment = function(obj) {
+var commentTemplate = function(obj) {
     var d = new Date(obj.created_time * 1000)
     var time = d.toLocaleString()
     var t = `
@@ -52,6 +64,7 @@ var templateComment = function(obj) {
                 ${obj.author}
                 <span class="comment-time">${time}</span>
             </p>
+            <p class="comment-id">#${obj.id}</p>
             <p class="comment-content">${obj.content}</p>
         </div>
     </div>
@@ -59,15 +72,15 @@ var templateComment = function(obj) {
     return t
 }
 
-var insertComment = function(data) {
+var commentInsert = function(arr) {
     var html = ''
-    for (var i = 0; i < data.length; i++) {
-        var d = data[i]
-        var t = templateComment(d)
+    for (var i = 0; i < arr.length; i++) {
+        var data = arr[i]
+        var t = commentTemplate(data)
         html += t
     }
     var wrap = e('.comment-wrap')
-    wrap.innerHTML = html
+    wrap.innerHTML += html
 }
 
 var bindCommentEvent = function() {
