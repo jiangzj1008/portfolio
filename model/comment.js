@@ -5,6 +5,7 @@ var filePath = 'db/comment.json'
 const ModelComment = function(form) {
     this.author = form.author || ''
     this.content = form.content || ''
+    this.id = form.id || 0
     this.created_time = Math.floor(new Date() / 1000)
 }
 

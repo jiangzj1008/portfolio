@@ -88,12 +88,4 @@ var bindCommentEvent = function() {
     bindEvent('.input-submit', 'click', commentAdd)
 }
 
-var bindMainEvent = function() {
-    bindEvent('.title', 'click', function() {
-        location.pathname = "/"
-    })
-}
-
-
-bindMainEvent()
 bindCommentEvent()
