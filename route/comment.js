@@ -15,7 +15,6 @@ var add = {
     method: 'post',
     func: function(request, response) {
         var form = request.body
-        console.log(form);
         var c = comment.new(form)
         var r = JSON.stringify(c)
         response.send(r)

@@ -7,6 +7,7 @@ var commentAll = function() {
         contentType: 'application/json',
         callback: function(response) {
             var data = JSON.parse(response)
+            displayItem('.comment-container')
             var wrap = e('.comment-wrap')
             wrap.innerHTML = ''
             commentInsert(data)
@@ -17,8 +18,7 @@ var commentAll = function() {
 
 var commentVerify = function() {
     var f = {}
-    var form = e('.comment-form')
-    var inputs = form.querySelectorAll('.comment-input')
+    var inputs = es('.comment-input')
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i]
         var val = input.value.trim()

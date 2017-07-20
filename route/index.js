@@ -18,18 +18,8 @@ var index = {
     }
 }
 
-var design = {
-    path: '/design',
-    method: 'get',
-    func: function(request, response) {
-        var path = 'design.html'
-        sendHtml(path, response)
-    }
-}
-
 var routes = [
     index,
-    design
 ]
 
 module.exports.routes = routes
