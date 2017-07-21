@@ -36,7 +36,7 @@ var add = {
     func: function(request, response) {
         var form = request.body
         console.log(form);
-        var c = comment.new(form)
+        var c = note.new(form)
         var r = JSON.stringify(c)
         response.send(r)
     }

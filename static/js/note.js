@@ -75,4 +75,4 @@ var noteInsert = function(arr) {
 }
 
 bindEvent('.note', 'click', noteAll)
-bindEvent('.submit', 'click', noteAdd)
+bindEvent('.note-submit', 'click', noteAdd)

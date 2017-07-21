@@ -24,7 +24,7 @@ b.all = function() {
 }
 
 b.new = function(form) {
-    var m = new ModelComment(form)
+    var m = new ModelNote(form)
     var d = this.data[this.data.length - 1]
     if (d == undefined) {
         m.id = 1
