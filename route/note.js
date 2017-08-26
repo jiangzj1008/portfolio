@@ -11,6 +11,15 @@ var sendHtml = function(path, response) {
     })
 }
 
+var main = {
+    path: '/api/note/main',
+    method: 'get',
+    func: function(request, response) {
+        var path = 'note.html'
+        sendHtml(path, response)
+    }
+}
+
 var all = {
     path: '/api/note/all',
     method: 'get',
@@ -43,6 +52,7 @@ var add = {
 }
 
 var routes = [
+    main,
     all,
     input,
     add,

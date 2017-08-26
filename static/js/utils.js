@@ -30,15 +30,3 @@ var ajax = function(request) {
         r.send(request.data)
     }
 }
-
-var displayItem = function(sel) {
-    var items = es('.item-container')
-    var target = e(sel)
-    for (var i = 0; i < items.length; i++) {
-        var item = items[i]
-        if (item.classList.contains('show')) {
-            item.classList.remove('show')
-        }
-    }
-    target.classList.add('show')
-}

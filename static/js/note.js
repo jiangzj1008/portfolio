@@ -1,3 +1,18 @@
+// 获取主页面
+var noteMain = function() {
+    var request = {
+        method: 'get',
+        url: '/api/note/main',
+        callback: function(response) {
+            var wrap = e('#main')
+            wrap.innerHTML = response
+            noteAll()
+        }
+    }
+    ajax(request)
+}
+
+// 获取数据进行渲染
 var noteAll = function() {
     var request = {
         method: 'get',
@@ -5,7 +20,6 @@ var noteAll = function() {
         contentType: 'application/json',
         callback: function(response) {
             var data = JSON.parse(response)
-            displayItem('.note-container')
             var wrap = e('.note-wrap')
             wrap.innerHTML = ''
             noteInsert(data)
@@ -13,7 +27,6 @@ var noteAll = function() {
     }
     ajax(request)
 }
-
 
 var noteVerify = function() {
     var f = {}
@@ -32,6 +45,7 @@ var noteVerify = function() {
     return f
 }
 
+// 增加数据
 var noteAdd = function() {
     var form = noteVerify()
     if (form === undefined) {
@@ -74,5 +88,4 @@ var noteInsert = function(arr) {
     wrap.innerHTML += html
 }
 
-bindEvent('.note', 'click', noteAll)
 bindEvent('.note-submit', 'click', noteAdd)
