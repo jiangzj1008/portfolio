@@ -5,8 +5,6 @@ layui.config({
     base: '' //设定扩展的Layui模块的所在目录，一般用于外部模块扩展
 })
 
-
-
 var navEvent = {
     home: Home.new(),
     // design: designMain,
@@ -34,10 +32,17 @@ var bindHashChange = function() {
     })
 }
 
-
 var __main = function() {
     bindHashChange()
     init()
 }
+
+layui.use('form', function(){
+    var form = layui.form
+    form.on('submit(formComment)', function(data){
+        navEvent.comment.add(data.field)
+        return false
+    })
+})
 
 __main()

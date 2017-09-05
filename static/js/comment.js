@@ -37,9 +37,10 @@ class Comment extends Page {
         }
         return f
     }
-    add() {
+    add(data) {
         var self = this
-        var form = self.verify()
+        // var form = self.verify()
+        var form = data
         if (form === undefined) {
             return
         }
