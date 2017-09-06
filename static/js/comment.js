@@ -4,7 +4,7 @@ class Comment extends Page {
         this.setup()
     }
     setup() {
-        this.bindSubmit()
+        this.bindBtns()
     }
     all() {
         var self = this
@@ -20,6 +20,13 @@ class Comment extends Page {
             }
         }
         ajax(request)
+    }
+    reset() {
+        var inputs = es('.comment-input')
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i]
+            input.value = ''
+        }
     }
     verify() {
         var f = {}
@@ -37,10 +44,9 @@ class Comment extends Page {
         }
         return f
     }
-    add(data) {
+    add() {
         var self = this
-        // var form = self.verify()
-        var form = data
+        var form = self.verify()
         if (form === undefined) {
             return
         }
@@ -54,6 +60,8 @@ class Comment extends Page {
                 var data = JSON.parse(response)
                 var arr = [data]
                 self.insert(arr)
+                self.reset()
+                alert('留言成功。')
             }
         }
         ajax(request)
@@ -63,13 +71,11 @@ class Comment extends Page {
         var time = d.toLocaleString()
         var t = `
         <div class="comment-item">
-            <img src="" alt="">
-            <div class="comment-detail">
-                <p class="comment-author">
-                    ${obj.author}
-                    <span class="comment-time">${time}</span>
-                </p>
-                <p class="comment-id">#${obj.id}</p>
+            <div class="comment-head">
+                <p class="comment-author">${obj.author} :</p>
+                <p class="comment-time">${time}</p>
+            </div>
+            <div class="comment-main">
                 <p class="comment-content">${obj.content}</p>
             </div>
         </div>
@@ -79,7 +85,7 @@ class Comment extends Page {
     insert(arr) {
         var self = this
         var html = ''
-        for (var i = 0; i < arr.length; i++) {
+        for (var i = arr.length-1; i >=0; i--) {
             var data = arr[i]
             var t = self.template(data)
             html += t
@@ -87,13 +93,15 @@ class Comment extends Page {
         var wrap = e('.comment-wrap')
         wrap.innerHTML += html
     }
-    bindSubmit() {
+    bindBtns() {
         var self = this
         var main = self.container
         main.addEventListener('click', function(evt) {
             var target = evt.target
-            if (target.classList.contains('input-submit')) {
+            if (target.classList.contains('comment-submit')) {
                 self.add()
+            } else if (target.classList.contains('comment-reset')) {
+                self.reset()
             }
         })
     }

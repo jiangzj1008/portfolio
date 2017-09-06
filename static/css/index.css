@@ -30,9 +30,12 @@ body {
     margin: 0 20px;
 }
 .item a {
-    font-size: 14px;
+    font-size: 16px;
     color: black;
     text-decoration: none;
+}
+.item a:hover {
+    color: #009688;
 }
 
 #main {
