@@ -1,10 +1,12 @@
 class Note extends Page {
     constructor() {
         super('note')
+        this.md = new Remarkable()
         this.setup()
     }
     setup() {
         this.bindSubmit()
+        this.bindPreview()
     }
     all() {
         var self = this
@@ -60,12 +62,13 @@ class Note extends Page {
     }
     template(obj) {
         var d = new Date(obj.created_time * 1000)
+        var content = this.md.render(obj.content)
         var time = d.toLocaleString()
         var t = `
         <div class="note-item">
             <h3 class="note-title">${obj.title}</h3>
             <p class="note-time">${time}</p>
-            <p class="note-content">${obj.content}</p>
+            <p class="note-content">${content}</p>
         </div>
         `
         return t
@@ -80,6 +83,24 @@ class Note extends Page {
         }
         var wrap = e('.note-wrap')
         wrap.innerHTML += html
+    }
+    // 预览功能
+    preview() {
+        var input = e('.input-content')
+        var output = e('.note-output')
+        var src = input.value
+        var html = this.md.render(src)
+        output.innerHTML = html
+    }
+    bindPreview() {
+        var self = this
+        var main = self.container
+        main.addEventListener('input', function(event) {
+            var target = event.target
+            if (target.classList.contains('input-content')) {
+                self.preview()
+            }
+        })
     }
     bindSubmit() {
         var self = this
