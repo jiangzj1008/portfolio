@@ -7,6 +7,7 @@ class Note extends Page {
     setup() {
         this.bindSubmit()
         this.bindPreview()
+        this.bindArticle()
     }
     all() {
         var self = this
@@ -17,6 +18,7 @@ class Note extends Page {
             callback: function(response) {
                 var data = JSON.parse(response)
                 var wrap = e('.note-wrap')
+                console.log(data);
                 wrap.innerHTML = ''
                 self.insert(data)
             }
@@ -62,13 +64,12 @@ class Note extends Page {
     }
     template(obj) {
         var d = new Date(obj.created_time * 1000)
-        var content = this.md.render(obj.content)
+        // var content = this.md.render(obj.content)
         var time = d.toLocaleString()
         var t = `
         <div class="note-item">
-            <h3 class="note-title">${obj.title}</h3>
+            <h3 class="note-title" data-id=${obj.id}>${obj.title}</h3>
             <p class="note-time">${time}</p>
-            <p class="note-content">${content}</p>
         </div>
         `
         return t
@@ -91,6 +92,36 @@ class Note extends Page {
         var src = input.value
         var html = this.md.render(src)
         output.innerHTML = html
+    }
+    // 获取文章
+    article(id) {
+        var self = this
+        var form = {
+            id: id
+        }
+        var data = JSON.stringify(form)
+        var request = {
+            method: 'post',
+            url: '/api/note/article',
+            data: data,
+            contentType: 'application/json',
+            callback: function(response) {
+                var data = JSON.parse(response)
+                console.log(data);
+            }
+        }
+        ajax(request)
+    }
+    bindArticle() {
+        var self = this
+        var main = self.container
+        main.addEventListener('click', function(event) {
+            var target = event.target
+            if (target.classList.contains('note-title')) {
+                var id = target.dataset.id
+                self.article(id)
+            }
+        })
     }
     bindPreview() {
         var self = this

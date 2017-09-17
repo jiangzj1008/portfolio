@@ -12,16 +12,22 @@ var init = function() {
     if (hash == undefined) {
         navEvent['home'].main()
     } else {
-        console.log(navEvent[hash]);
-        navEvent[hash].main()
+        if (hash.indexOf('/') >= 0) {
+            var section = hash.split('/')[0]
+            console.log(navEvent[section]);
+            navEvent[section].main()
+        } else {
+            navEvent[hash].main()
+        }
     }
 }
 
 var bindHashChange = function() {
     window.addEventListener('hashchange', function(evt) {
         var hash = location.hash.split('#')[1]
-        if (navEvent[hash] != undefined) {
-            navEvent[hash].main()
+        var section = hash.split('/')[0]
+        if (navEvent[section] != undefined) {
+            navEvent[section].main()
         }
     })
 }

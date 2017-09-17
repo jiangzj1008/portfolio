@@ -20,7 +20,28 @@ var b = {
 }
 
 b.all = function() {
-    return this.data
+    // return this.data
+    var newArr = []
+    for (var i = 0; i < this.data.length; i++) {
+        var title = this.data[i].title
+        var created_time = this.data[i].created_time
+        var id = this.data[i].id
+        newArr[i] = {
+            title: title,
+            created_time: created_time,
+            id: id
+        }
+    }
+    return newArr
+}
+
+b.article = function(form) {
+    var id = form.id
+    for (var i = 0; i < this.data.length; i++) {
+        if (id == this.data[i].id) {
+            return this.data[i]
+        }
+    }
 }
 
 b.new = function(form) {

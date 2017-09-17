@@ -20,6 +20,17 @@ var main = {
     }
 }
 
+var article = {
+    path: '/api/note/article',
+    method: 'post',
+    func: function(request, response) {
+        var form = request.body
+        var article = note.article(form)
+        var r = JSON.stringify(article)
+        response.send(r)
+    }
+}
+
 var all = {
     path: '/api/note/all',
     method: 'get',
@@ -54,6 +65,7 @@ var add = {
 var routes = [
     main,
     all,
+    article,
     input,
     add,
 ]
