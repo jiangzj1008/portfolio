@@ -18,7 +18,6 @@ class Note extends Page {
             callback: function(response) {
                 var data = JSON.parse(response)
                 var wrap = e('.note-wrap')
-                console.log(data);
                 wrap.innerHTML = ''
                 self.insert(data)
             }
@@ -93,6 +92,19 @@ class Note extends Page {
         var html = this.md.render(src)
         output.innerHTML = html
     }
+    // 阅读文章
+    display(data) {
+        var d = new Date(data.created_time * 1000)
+        var content = this.md.render(data.content)
+        var time = d.toLocaleString()
+        var t = `
+            <h3 class="article-title">${data.title}</h3>
+            <p class="article-time">${time}</p>
+            <div class="article-content">${content}</div>
+        `
+        var wrap = e('#main')
+        wrap.innerHTML = t
+    }
     // 获取文章
     article(id) {
         var self = this
@@ -107,7 +119,7 @@ class Note extends Page {
             contentType: 'application/json',
             callback: function(response) {
                 var data = JSON.parse(response)
-                console.log(data);
+                self.display(data)
             }
         }
         ajax(request)
@@ -119,7 +131,8 @@ class Note extends Page {
             var target = event.target
             if (target.classList.contains('note-title')) {
                 var id = target.dataset.id
-                self.article(id)
+                location.hash += `/${id}`
+                // self.article(id)
             }
         })
     }

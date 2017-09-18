@@ -9,24 +9,43 @@ var navEvent = {
 
 var init = function() {
     var hash = location.hash.split('#')[1]
-    if (hash == undefined) {
+    // no hash
+    if (hash == '') {
         navEvent['home'].main()
+        return
+    }
+    // has hash
+    var data = hash.split('/')
+    var section = data[0]
+    if (!navEvent[section]) {
+        return
+    }
+    if (section == 'note' && data[1]) {
+        var id = data[1]
+        navEvent['note'].article(id)
     } else {
-        if (hash.indexOf('/') >= 0) {
-            var section = hash.split('/')[0]
-            console.log(navEvent[section]);
-            navEvent[section].main()
-        } else {
-            navEvent[hash].main()
-        }
+        navEvent[section].main()
     }
 }
 
 var bindHashChange = function() {
     window.addEventListener('hashchange', function(evt) {
         var hash = location.hash.split('#')[1]
-        var section = hash.split('/')[0]
-        if (navEvent[section] != undefined) {
+        // no hash
+        if (hash == '') {
+            navEvent['home'].main()
+            return
+        }
+        // has hash
+        var data = hash.split('/')
+        var section = data[0]
+        if (!navEvent[section]) {
+            return
+        }
+        if (section == 'note' && data[1]) {
+            var id = data[1]
+            navEvent['note'].article(id)
+        } else {
             navEvent[section].main()
         }
     })
