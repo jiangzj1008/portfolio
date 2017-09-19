@@ -67,7 +67,7 @@ class Note extends Page {
         var time = d.toLocaleString()
         var t = `
         <div class="note-item">
-            <h3 class="note-title" data-id=${obj.id}>${obj.title}</h3>
+            <h3 class="note-title" data-id=${obj.id}>· ${obj.title}</h3>
             <p class="note-time">${time}</p>
         </div>
         `
@@ -76,7 +76,7 @@ class Note extends Page {
     insert(arr) {
         var self = this
         var html = ''
-        for (var i = 0; i < arr.length; i++) {
+        for (var i = arr.length-1; i >= 0; i--) {
             var data = arr[i]
             var t = self.template(data)
             html += t

@@ -34,11 +34,11 @@
 
 .note-wrap {
     width: 600px;
-    margin: 50px auto;
+    margin: 0px auto 50px;
 }
 .note-item {
-    overflow: hidden;
-    border-bottom: 1px solid #e6e6e6;
+  overflow: hidden;
+  border-bottom: 1px solid #e6e6e6;
 }
 .note-item:first-child {
     border-top: 1px solid #e6e6e6;
@@ -46,12 +46,14 @@
 .note-title {
     float: left;
     cursor: pointer;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 10px 0px;
 }
 .note-time {
     float: right;
     font-size: 14px;
+    line-height: 18px;
     color: #9a9a9a;
-}
-.note-content {
-    margin-top: 0px;
+    margin: 10px 0px;
 }

@@ -10,7 +10,7 @@ var navEvent = {
 var init = function() {
     var hash = location.hash.split('#')[1]
     // no hash
-    if (hash == '') {
+    if (hash == undefined) {
         navEvent['home'].main()
         return
     }
@@ -32,7 +32,7 @@ var bindHashChange = function() {
     window.addEventListener('hashchange', function(evt) {
         var hash = location.hash.split('#')[1]
         // no hash
-        if (hash == '') {
+        if (hash == undefined) {
             navEvent['home'].main()
             return
         }
