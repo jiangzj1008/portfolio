@@ -5,9 +5,7 @@ class Note extends Page {
         this.setup()
     }
     setup() {
-        this.bindSubmit()
-        this.bindPreview()
-        this.bindArticle()
+        this.bindEvents()
     }
     all() {
         var self = this
@@ -98,9 +96,11 @@ class Note extends Page {
         var content = this.md.render(data.content)
         var time = d.toLocaleString()
         var t = `
-            <h3 class="article-title">${data.title}</h3>
-            <p class="article-time">${time}</p>
-            <div class="article-content">${content}</div>
+            <div class="article-wrap">
+                <h3 class="article-title">${data.title}</h3>
+                <p class="article-time">${time}</p>
+                <div class="article-content">${content}</div>
+            </div>
         `
         var wrap = e('#main')
         wrap.innerHTML = t
@@ -124,35 +124,18 @@ class Note extends Page {
         }
         ajax(request)
     }
-    bindArticle() {
-        var self = this
-        var main = self.container
-        main.addEventListener('click', function(event) {
-            var target = event.target
-            if (target.classList.contains('note-title')) {
-                var id = target.dataset.id
-                location.hash += `/${id}`
-                // self.article(id)
-            }
-        })
-    }
-    bindPreview() {
-        var self = this
-        var main = self.container
-        main.addEventListener('input', function(event) {
-            var target = event.target
-            if (target.classList.contains('input-content')) {
-                self.preview()
-            }
-        })
-    }
-    bindSubmit() {
+    bindEvents() {
         var self = this
         var main = self.container
         main.addEventListener('click', function(evt) {
             var target = evt.target
             if (target.classList.contains('note-submit')) {
                 self.add()
+            } else if (target.classList.contains('input-content')) {
+                self.preview()
+            } else if (target.classList.contains('note-title')) {
+                var id = target.dataset.id
+                location.hash += `/${id}`
             }
         })
     }

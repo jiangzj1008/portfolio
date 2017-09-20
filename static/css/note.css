@@ -57,3 +57,20 @@
     color: #9a9a9a;
     margin: 10px 0px;
 }
+
+.article-wrap {
+    border-top: 1px solid #e6e6e6;
+}
+.article-title {
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.article-time {
+    font-size: 14px;
+    color: #9a9a9a;
+    margin: 0px;
+}
+.article-content {
+    margin-top: 32px;
+}
