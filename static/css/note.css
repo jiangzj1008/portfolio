@@ -1,6 +1,36 @@
 .note-form {
-    width: 600px;
-    margin: auto;
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.note-form.on {
+    display: block;
+}
+.note-form-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1200px;
+    overflow: hidden;
+    transform: translate3d(-50%, -50%, 0);
+}
+.note-input-area {
+    box-sizing: border-box;
+    width: 590px;
+    float: left;
+}
+.note-output {
+    box-sizing: border-box;
+    float: right;
+    width: 590px;
+    height: 600px;
+    padding: 10px;
+    border: 1px solid #9a9a9a;
+    background: #fff;
 }
 .note-input {
     display: block;
@@ -11,8 +41,14 @@
     padding: 8px;
     border: 1px solid #e6e6e6;
     outline: none;
-    margin: 10px auto;
+    margin: 0px;
     font-size: 14px;
+}
+.input-title {
+    margin-bottom: 16px;
+}
+.input-content {
+    height: 550px;
 }
 .note-btn {
     box-sizing: border-box;
@@ -37,25 +73,21 @@
     margin: 0px auto 50px;
 }
 .note-item {
-  overflow: hidden;
-  border-bottom: 1px solid #e6e6e6;
-}
-.note-item:first-child {
-    border-top: 1px solid #e6e6e6;
+    margin-bottom: 15px;
 }
 .note-title {
-    float: left;
     cursor: pointer;
     font-size: 18px;
     font-weight: normal;
-    margin: 10px 0px;
+    margin: 0px;
+    margin-bottom: 5px;
 }
 .note-time {
-    float: right;
     font-size: 14px;
     line-height: 18px;
     color: #9a9a9a;
-    margin: 10px 0px;
+    margin: 0px;
+    padding-left: 10px;
 }
 
 .article-wrap {
@@ -73,4 +105,25 @@
 }
 .article-content {
     margin-top: 32px;
+}
+.note-btn-write {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    color: #9a9a9a;
+    border: 1px solid #9a9a9a;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.note-btn-write:hover {
+    color: #fff;
+    background: #009688;
+    border: 1px solid #009688;
 }

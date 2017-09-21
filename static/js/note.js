@@ -62,12 +62,12 @@ class Note extends Page {
     template(obj) {
         var d = new Date(obj.created_time * 1000)
         // var content = this.md.render(obj.content)
-        var time = d.toLocaleString()
+        var time = d.toLocaleString().split(' ')[0]
         var t = `
-        <div class="note-item">
-            <h3 class="note-title" data-id=${obj.id}>· ${obj.title}</h3>
-            <p class="note-time">${time}</p>
-        </div>
+            <div class="note-item">
+                <h3 class="note-title" data-id=${obj.id}>· ${obj.title}</h3>
+                <p class="note-time">${time}</p>
+            </div>
         `
         return t
     }
@@ -127,15 +127,22 @@ class Note extends Page {
     bindEvents() {
         var self = this
         var main = self.container
+        main.addEventListener('keyup', function(evt) {
+            var target = evt.target
+            if (target.classList.contains('input-content')) {
+                self.preview()
+            }
+        })
         main.addEventListener('click', function(evt) {
             var target = evt.target
             if (target.classList.contains('note-submit')) {
                 self.add()
-            } else if (target.classList.contains('input-content')) {
-                self.preview()
             } else if (target.classList.contains('note-title')) {
                 var id = target.dataset.id
                 location.hash += `/${id}`
+            } else if (target.classList.contains('note-btn-write')) {
+                var form = e('.note-form')
+                form.classList.add('on')
             }
         })
     }
