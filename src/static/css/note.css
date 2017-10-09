@@ -14,23 +14,24 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1200px;
+    width: 1000px;
     overflow: hidden;
     transform: translate3d(-50%, -50%, 0);
 }
 .note-input-area {
     box-sizing: border-box;
-    width: 590px;
+    width: 500px;
     float: left;
 }
 .note-output {
     box-sizing: border-box;
-    float: right;
-    width: 590px;
+    float: left;
+    width: 500px;
     height: 600px;
     padding: 10px;
     border: 1px solid #9a9a9a;
     background: #fff;
+    overflow: auto;
 }
 .note-input {
     display: block;
@@ -39,21 +40,24 @@
     max-width: 100%;
     resize: none;
     padding: 8px;
-    border: 1px solid #e6e6e6;
     outline: none;
     margin: 0px;
     font-size: 14px;
 }
-.input-title {
-    margin-bottom: 16px;
+.note-input-title {
+    height: 50px;
 }
-.input-content {
+.note-input-content {
     height: 550px;
+}
+.note-btn-wrap {
+    display: inline-block;
+    margin-top: 4px;
 }
 .note-btn {
     box-sizing: border-box;
     line-height: 38px;
-    padding: 0 18px;
+    padding: 0 30px;
     font-size: 14px;
     background: #fff;
     color: #555;
@@ -67,10 +71,11 @@
     background: #009688;
     border: 1px solid #009688;
 }
-
 .note-wrap {
     width: 600px;
     margin: 0px auto 50px;
+    padding-top: 20px;
+    border-top: 1px solid #e6e6e6;
 }
 .note-item {
     margin-bottom: 15px;

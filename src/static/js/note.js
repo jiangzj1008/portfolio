@@ -84,7 +84,7 @@ class Note extends Page {
     }
     // 预览功能
     preview() {
-        var input = e('.input-content')
+        var input = e('.note-input-content')
         var output = e('.note-output')
         var src = input.value
         var html = this.md.render(src)
@@ -129,7 +129,7 @@ class Note extends Page {
         var main = self.container
         main.addEventListener('keyup', function(evt) {
             var target = evt.target
-            if (target.classList.contains('input-content')) {
+            if (target.classList.contains('note-input-content')) {
                 self.preview()
             }
         })
@@ -143,6 +143,14 @@ class Note extends Page {
             } else if (target.classList.contains('note-btn-write')) {
                 var form = e('.note-form')
                 form.classList.add('on')
+            } else if (target.classList.contains('note-form')) {
+                var form = e('.note-form')
+                form.classList.remove('on')
+            } else if (target.classList.contains('note-reset')) {
+                var title = e('.note-input-title')
+                var content = e('.note-input-content')
+                title.value = ''
+                content.value = ''
             }
         })
     }

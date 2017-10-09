@@ -2,7 +2,7 @@
 var navEvent = {
     home: Home.new(),
     // design: designMain,
-    // program: programMain,
+    program: Program.new(),
     note: Note.new(),
     comment: Comment.new(),
 }
