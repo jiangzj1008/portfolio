@@ -91,7 +91,7 @@ class Comment extends Page {
             html += t
         }
         var wrap = e('.comment-wrap')
-        wrap.innerHTML += html
+        wrap.innerHTML = html + wrap.innerHTML
     }
     bindBtns() {
         var self = this
