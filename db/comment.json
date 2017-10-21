@@ -1,62 +1,8 @@
 [
   {
-    "author": "蒋志坚",
-    "content": "评论功能测试：\n嘟嘟嘟嘟嘟嘟。。。。。。",
-    "created_time": 1491470824,
-    "id": 1
-  },
-  {
-    "author": "jiangz",
-    "content": "jiangz",
-    "created_time": 1491614034,
-    "id": 2
-  },
-  {
-    "author": "jiangzj",
-    "content": "我要进行评论啦~~~",
-    "created_time": 1492005566,
-    "id": 3
-  },
-  {
-    "author": "hi",
-    "content": "jiang",
-    "id": 4,
-    "created_time": 1503832372
-  },
-  {
-    "author": "1",
-    "content": "2",
-    "id": 5,
-    "created_time": 1504627053
-  },
-  {
-    "author": "jiang",
-    "content": "zhijian",
-    "id": 6,
-    "created_time": 1504685107
-  },
-  {
-    "author": "测试",
-    "content": "text",
-    "id": 7,
-    "created_time": 1504703087
-  },
-  {
-    "author": "jiang",
-    "content": "zhijian",
-    "id": 8,
-    "created_time": 1504703174
-  },
-  {
-    "author": "蒋志坚",
-    "content": "你好",
-    "id": 9,
-    "created_time": 1508556132
-  },
-  {
-    "author": "jzj",
-    "content": "哈哈哈",
-    "id": 10,
-    "created_time": 1508556227
+    "author": "GE",
+    "content": "欢迎大家来留言",
+    "id": 1,
+    "created_time": 1508559969
   }
 ]

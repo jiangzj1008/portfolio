@@ -1,26 +1,2 @@
 [
-  {
-    "title": "测试Markdown语法",
-    "content": "hello",
-    "created_time": 1491467369,
-    "id": 1
-  },
-  {
-    "title": "欢迎",
-    "content": "留言",
-    "created_time": 1491470648,
-    "id": 2
-  },
-  {
-    "title": "尝试",
-    "content": "hei",
-    "id": 3,
-    "created_time": 1505547882
-  },
-  {
-    "title": "测试语法",
-    "content": "## 喝茶\n1. 你好\n2. 我好",
-    "id": 4,
-    "created_time": 1505580840
-  }
 ]
