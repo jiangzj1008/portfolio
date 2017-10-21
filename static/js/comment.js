@@ -85,11 +85,11 @@ class Comment extends Page {
     insert(arr) {
         var self = this
         var html = ''
-        for (var i = arr.length-1; i >=0; i--) {
-            var data = arr[i]
+        arr.reverse()
+        arr.map((data)=>{
             var t = self.template(data)
             html += t
-        }
+        })
         var wrap = e('.comment-wrap')
         wrap.innerHTML = html + wrap.innerHTML
     }

@@ -21,11 +21,10 @@ const routeFiles = [
 ]
 
 var registerAll = function(routeFiles) {
-    for (var i = 0; i < routeFiles.length; i++) {
-        var file = routeFiles[i]
-        var r = require(file)
+    routeFiles.map((f)=>{
+        var r = require(f)
         registerRoutes(app, r.routes)
-    }
+    })
 }
 
 registerAll(routeFiles)
