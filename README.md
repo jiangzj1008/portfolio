@@ -4,9 +4,10 @@
 
 - 一个记录个人学习的网站，实现了发表文章、游客留言等功能
 - 采用MVC的设计模式进行开发
+- 使用原生Javascript实现了简单的单页模式
 - 使用AJAX实现前后端数据的交互
 - 使用JSON储存数据
 - 采用面向对象，实现代码的模块化
 
-![png](PlaneFight.gif)
+![png](Screenshot.png)
 
